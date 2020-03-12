@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <h1>{{ titulo }}</h1>
-    <ul>
-      <li v-for="foto of fotos">
+  <div class="corpo">
+    <h1 class="centralizado">{{ titulo }}</h1>
+    <ul class="lista-fotos">
+      <li class="lista-fotos-item" v-for="foto of fotos">
         <img :src="foto.url" :alt="foto.titulo">
       </li>
     </ul>
@@ -14,10 +14,10 @@
     data() {
       return {
         titulo: "Alurapic",
-        fotos:[],
+        fotos: [],
       }
     },
-    created(){
+    created() {
       this.$http.get("http://localhost:3000/v1/fotos")
         .then(res => res.json())
         .then(qualquernome => this.fotos = qualquernome, erro => console.log(erro));
@@ -26,4 +26,20 @@
 </script>
 
 <style>
+  .corpo {
+    font-family: Helvetica, sans-serif;
+    width: 96%;
+    margin: 0 auto;
+  }
+  .centralizado{
+    text-align:center;
+  }
+  .lista-fotos{
+    list-style:none;
+  }
+  .lista-fotos .lista-fotos-item{
+    display:inline-block;
+    margin:5px;
+  }
+
 </style>
