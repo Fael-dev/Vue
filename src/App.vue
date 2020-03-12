@@ -3,19 +3,21 @@
     <h1 class="centralizado">{{ titulo }}</h1>
     <ul class="lista-fotos">
       <li class="lista-fotos-item" v-for="foto of fotos">
-        <div class="painel">
-          <h2 class="painel-titulo">{{ foto.titulo }}</h2>
-          <div class="painel-conteudo">
-            <img class="imagem-responsiva" :src="foto.url" :alt="foto.titulo">
-          </div>
-        </div>
+        <meu-Painel :titulo="foto.titulo">
+        <img class="imagem-responsiva" :src="foto.url" :alt="foto.titulo">
+        </meu-Painel>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+  import Painel from './components/shared/painel/Painel.vue';
+
   export default {
+    components:{
+      'meu-Painel': Painel,
+    },
     data() {
       return {
         titulo: "Alurapic",
@@ -48,9 +50,11 @@
   .lista-fotos .lista-fotos-item {
     display: inline-block;
   }
-  .imagem-responsiva{
-    width:100%;
+
+  .imagem-responsiva {
+    width: 100%;
   }
+
   /* estilo do painel */
 
   .painel {
