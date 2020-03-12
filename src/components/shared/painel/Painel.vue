@@ -2,7 +2,12 @@
   <div class="painel">
     <h2 class="painel-titulo">{{ titulo }}</h2>
     <slot class="painel-conteudo">
-      <!-- SLOT FAZ QUASE A MSM COISA QUE UM BLOCK NO DJANGO-->
+      <!--
+        SLOT FAZ QUASE A MSM COISA QUE UM BLOCK NO DJANGO
+        <slot name="header"> CHAMA O SLOT PELO NOME
+        <div slot="header"></div>
+       -->
+
     </slot>
   </div>
 </template>

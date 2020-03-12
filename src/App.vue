@@ -1,6 +1,8 @@
 <template>
   <div class="corpo">
     <h1 class="centralizado">{{ titulo }}</h1>
+    <input type="search" class="filtro" v-on:input="filtro = $event.target.value" placeholder="Pesquise por títulos...">
+    {{ filtro }}
     <ul class="lista-fotos">
       <li class="lista-fotos-item" v-for="foto of fotos">
         <meu-Painel :titulo="foto.titulo">
@@ -22,6 +24,7 @@
       return {
         titulo: "Alurapic",
         fotos: [],
+        filtro: ''
       }
     },
     created() {
@@ -76,6 +79,10 @@
     margin: 0 0 15px 0;
     padding: 10px;
     text-transform: uppercase;
+  }
+  .filtro{
+    display:block;
+    width:100%;
   }
 
 </style>
