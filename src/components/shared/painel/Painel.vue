@@ -1,26 +1,28 @@
 <template>
   <div class="painel">
     <h2 class="painel-titulo" @click="visivel = !visivel">{{ titulo }}</h2>
-    <div class="painel-conteudo" v-show="visivel">
-      <slot>
-        <!--
-          SLOT FAZ QUASE A MSM COISA QUE UM BLOCK NO DJANGO
-          <slot name="header"> CHAMA O SLOT PELO NOME
-          <div slot="header"></div>
-          SLOT não recebe diretivas
-          DIRETIVA v-on: => forma simples @
-         -->
-      </slot>
-    </div>
+    <transition name="painel-fade">
+      <div class="painel-conteudo" v-show="visivel">
+        <slot>
+          <!--
+            SLOT FAZ QUASE A MSM COISA QUE UM BLOCK NO DJANGO
+            <slot name="header"> CHAMA O SLOT PELO NOME
+            <div slot="header"></div>
+            SLOT não recebe diretivas
+            DIRETIVA v-on: => forma simples @
+           -->
+        </slot>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script>
   export default {
     props: ['titulo'],
-    data(){
-      return{
-        visivel:true
+    data() {
+      return {
+        visivel: true
       }
     }
   }
@@ -53,5 +55,15 @@
 * {
   box-shadow: 5px 5px 5px;
 }
+  .painel-fade-enter, .painel-fade-leave-active{
+    opacity:0;
+  }
+  .painel-fade-enter-active, .painel-fade-leave-active{
+    transition: opacity .4s;
+  }
 
 </style>
+
+// painel-fade-enter  // Antes do elemento ser incluído ou removido, estado atual
+// painel-fade-enter-active // Quando o elemento está sendo incluido
+// painel-fade-leave-active // Quando o elemento está sendo removido
