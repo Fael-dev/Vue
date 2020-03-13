@@ -1,39 +1,51 @@
 <template>
   <!-- ANGULAR EXPRESSION == INTERPOLAÇÃO -->
   <div>
-    <button @click="disparaAcao()" class="botao botao-perigo" :type="tipo">{{ rotulo }} </button>
+    <button @click="disparaAcao()" class="botao" :class="estiloBotao" :type="tipo">{{ rotulo }}</button>
   </div>
 </template>
 
 <script>
   export default {
     name: "Botao",
-    props:['tipo','rotulo'],
-    methods:{
-      disparaAcao(){
-        if(confirm("Remover foto?")) {
-          this.$emit('botaoAtivado'); //$emit => PERMITE ALTERAR O NOME DO EVENTO
+    props: ['tipo', 'rotulo', 'confirmacao', 'estilo'],
+    methods: {
+      disparaAcao() {
+        if (this.confirmacao) {
+          if (confirm("Remover foto?")) {
+            this.$emit('botaoAtivado'); //$emit => PERMITE ALTERAR O NOME DO EVENTO
+          }
+          return;
         }
+        this.$emit('botaoAtivado');
+      }
+    },
+    computed:{
+      estiloBotao(){
+        if(this.estilo == 'padrao' || !this.estilo) return 'botao-padrao';
+        if(this.estilo == 'perigo') return 'botao-perigo';
       }
     }
   }
 </script>
 
 <style scoped>
-  .botao{
+  .botao {
     display: inline-block;
-    padding:10px;
-    border-radius:3px;
-    margin:10px;
-    font-size:1.2em;
+    padding: 10px;
+    border-radius: 3px;
+    margin: 10px;
+    font-size: 1.2em;
   }
-  .botao-perigo{
+
+  .botao-perigo {
     background-color: firebrick;
-    color:white;
+    color: white;
   }
-  .botao-padrao{
+
+  .botao-padrao {
     background-color: darkcyan;
-    color:white;
+    color: white;
   }
 
 </style>

@@ -8,7 +8,7 @@
       <li class="lista-fotos-item" v-for="foto of fotosComFiltro">
         <meu-Painel :titulo="foto.titulo">
           <imagem-responsiva :url="foto.url" :titulo="foto.titulo"/>
-          <meu-botao tipo="reset" rotulo="Remover" @botaoAtivado="remove(foto)"/>
+          <meu-botao tipo="reset" rotulo="Remover" :confirmacao="true" estilo="perigo" @botaoAtivado="remove(foto)"/>
           <!-- @click `.native` É NECESSÁRIO PARA ADD O EVENTO AO COMPONENTE VUE, POIS ESSA PROPRIEDADE NÃO É NATIVA DO COMPONENTE -->
         </meu-Painel>
       </li>
