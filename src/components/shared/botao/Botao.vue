@@ -1,14 +1,21 @@
 <template>
   <!-- ANGULAR EXPRESSION == INTERPOLAÇÃO -->
   <div>
-    <button class="botao botao-perigo" :type="tipo">{{ rotulo }} </button>
+    <button @click="disparaAcao()" class="botao botao-perigo" :type="tipo">{{ rotulo }} </button>
   </div>
 </template>
 
 <script>
   export default {
     name: "Botao",
-    props:['tipo','rotulo']
+    props:['tipo','rotulo'],
+    methods:{
+      disparaAcao(){
+        if(confirm("Remover foto?")) {
+          this.$emit('botaoAtivado'); //$emit => PERMITE ALTERAR O NOME DO EVENTO
+        }
+      }
+    }
   }
 </script>
 
