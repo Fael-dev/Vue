@@ -55,15 +55,18 @@
 * {
   box-shadow: 5px 5px 5px;
 }
-  .painel-fade-enter, .painel-fade-leave-active{
-    opacity:0;
-  }
-  .painel-fade-enter-active, .painel-fade-leave-active{
-    transition: opacity .4s;
-  }
-  .painel-conteudo{
-    overflow: hidden;
-  }
+
+.painel-fade-enter, .painel-fade-leave-active {
+  opacity: 0;
+}
+
+.painel-fade-enter-active, .painel-fade-leave-active {
+  transition: opacity .4s;
+}
+
+.painel-conteudo {
+  overflow: hidden;
+}
 
 </style>
 

@@ -18,12 +18,15 @@
 
       <div class="controle">
         <label for="descricao">DESCRIÇÃO</label>
-        <textarea id="descricao" autocomplete="off" @input="foto.descricao = $event.target.value" :value="foto.descricao"></textarea>
+        <textarea id="descricao" autocomplete="off" @input="foto.descricao = $event.target.value"
+                  :value="foto.descricao"></textarea>
       </div>
 
       <div class="centralizado">
         <meu-botao rotulo="GRAVAR" tipo="submit"/>
-        <router-link to="/"><meu-botao rotulo="VOLTAR" tipo="button"/></router-link>
+        <router-link to="/">
+          <meu-botao rotulo="VOLTAR" tipo="button"/>
+        </router-link>
       </div>
 
     </form>
@@ -42,22 +45,22 @@
       'imagem-responsiva': ImagemResponsiva,
       'meu-botao': Botao
     },
-    data(){
-      return{
-        foto:{
-          titulo:'',
-          url:'',
-          descricao:''
+    data() {
+      return {
+        foto: {
+          titulo: '',
+          url: '',
+          descricao: ''
         }
       }
-  },
-    methods:{
-      grava(){
+    },
+    methods: {
+      grava() {
         console.log("Enviar para o servidor");
         this.foto = {
-          titulo:'',
+          titulo: '',
           url: '',
-          descricao:''
+          descricao: ''
         }
       }
     }
@@ -69,11 +72,13 @@
   .centralizado {
     text-align: center;
   }
+
   .controle {
     font-size: 1.2em;
     margin-bottom: 20px;
 
   }
+
   .controle label {
     display: block;
     font-weight: bold;
