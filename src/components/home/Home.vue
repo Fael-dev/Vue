@@ -8,7 +8,8 @@
       <li class="lista-fotos-item" v-for="foto of fotosComFiltro">
         <meu-Painel :titulo="foto.titulo">
           <imagem-responsiva :url="foto.url" :titulo="foto.titulo"/>
-          <meu-botao tipo="reset" rotulo="Remover"/>
+          <meu-botao tipo="reset" rotulo="Remover" @click.native="remove(foto)"/>
+          <!-- .native É NECESSÁRIO PARA ADD O EVENTO AO COMPONENTE VUE, POIS ESSA PROPRIEDADE NÃO É NATIVA DO COMPONENTE -->
         </meu-Painel>
       </li>
     </ul>
@@ -41,6 +42,13 @@
           return this.fotos.filter(foto => exp.test(foto.titulo));
         } else {
           return this.fotos;
+        }
+      }
+    },
+    methods:{
+      remove(foto){
+        if(confirm('Remover a foto '+foto.titulo+' ?')){
+          alert("Foto removida com sucesso!");
         }
       }
     },
