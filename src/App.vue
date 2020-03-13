@@ -11,10 +11,11 @@
 </template>
 
 <script>
-  import { routes } from './routes';
+  import {routes} from './routes';
   import Menu from './components/shared/menu/Menu.vue';
+
   export default {
-    components:{
+    components: {
       'meu-Menu': Menu
     },
     data() {

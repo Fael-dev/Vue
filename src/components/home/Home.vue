@@ -7,8 +7,13 @@
     <ul class="lista-fotos">
       <li class="lista-fotos-item" v-for="foto of fotosComFiltro">
         <meu-Painel :titulo="foto.titulo">
-          <imagem-responsiva :url="foto.url" :titulo="foto.titulo"/>
+          <imagem-responsiva v-meu-transform :url="foto.url" :titulo="foto.titulo"/>
           <meu-botao tipo="reset" rotulo="Remover" :confirmacao="true" estilo="perigo" @botaoAtivado="remove(foto)"/>
+          <!--
+          NÃO FOI ADICIONADO O : ANTES DE ALGUMAS PROPRIEDADES,
+           POIS ELAS NÃO ESTÃO NO ELEMENTO PAI, E SIM EM UM ELEMENTO FILHO
+           FOI ADICIONADO NA PROPRIEDADE confirmacao POIS A DATA BIDING ENTENDE QUE O CONTEUDO QUE É PASSADO É UM BOOLEAN E NÃO UMA STRING
+           -->
           <!-- @click `.native` É NECESSÁRIO PARA ADD O EVENTO AO COMPONENTE VUE, POIS ESSA PROPRIEDADE NÃO É NATIVA DO COMPONENTE -->
         </meu-Painel>
       </li>

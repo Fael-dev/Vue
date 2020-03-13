@@ -8,7 +8,18 @@
 <script>
   export default {
     name: "Botao",
-    props: ['tipo', 'rotulo', 'confirmacao', 'estilo'],
+    props: {
+      tipo: {
+        required: true,
+        type: String
+      },
+      rotulo: {
+        required: true,
+        type: String
+      },
+      confirmacao: Boolean,
+      estilo: String
+    },
     methods: {
       disparaAcao() {
         if (this.confirmacao) {
@@ -20,10 +31,10 @@
         this.$emit('botaoAtivado');
       }
     },
-    computed:{
-      estiloBotao(){
-        if(this.estilo == 'padrao' || !this.estilo) return 'botao-padrao';
-        if(this.estilo == 'perigo') return 'botao-perigo';
+    computed: {
+      estiloBotao() {
+        if (this.estilo == 'padrao' || !this.estilo) return 'botao-padrao';
+        if (this.estilo == 'perigo') return 'botao-perigo';
       }
     }
   }
