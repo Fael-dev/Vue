@@ -1,13 +1,26 @@
 <template>
   <div class="corpo">
+    <nav>
+      <ul>
+        <li v-for="route in routes"><router-link :to="route.path">{{ route.nome }}</router-link></li>
+        <!-- <li v-for="route in routes"><router-link :to="route.path ? route.path : '/' ">{{ route.nome }}</router-link></li> -->
+      </ul>
+    </nav>
     <router-view></router-view>
   </div>
+  <!--
+    NÃO PODE USAR A TAG a:href POIS VAI RECARREGAR A PÁGINA E SPA(SIMPLE PAGE APPLICATION), NÃO PODE SER RECARREGADA
+  -->
 </template>
 
 <script>
-
+  import { routes } from './routes';
   export default {
-
+    data(){
+      return{
+        routes
+      }
+    }
   }
 </script>
 
