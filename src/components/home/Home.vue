@@ -26,6 +26,7 @@
   import Painel from '../shared/painel/Painel';
   import ImagemResponsiva from "../shared/imagem-responsiva/ImagemResponsiva";
   import Botao from '../shared/botao/Botao';
+  import FotoService from '../../domain/foto/FotoService';
 
 
   export default {
@@ -54,7 +55,7 @@
     },
     methods: {
       remove(foto) {
-        this.resource.delete({ id:foto._id })
+        this.service.apaga(foto._id)
         .then(
           ()=> {
             let indice = this.fotos.indexOf(foto);
@@ -73,11 +74,11 @@
       }
     },
     created() {
-      this.resource = this.$resource('v1/fotos{/id}'); // Faz a msm coisa que o $http
-      this.resource
-      .query() 
-      .then(res => res.json())
+      this.service = new FotoService(this.$resource);
+
+      this.service.lista() 
       .then(qualquernome => this.fotos = qualquernome, erro => console.log(erro));
+     
      // this.$http.get("v1/fotos")
      //  .then(res => res.json())
      //  .then(qualquernome => this.fotos = qualquernome, erro => console.log(erro));
