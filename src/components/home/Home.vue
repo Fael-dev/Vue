@@ -54,8 +54,7 @@
     },
     methods: {
       remove(foto) {
-        //this.$http.delete('localhost:3000/v1/fotos/'+foto._id); jeito javascript puro
-        this.$http.delete(`http://localhost:3000/v1/fotos/${foto._id}`)
+        this.resource.delete({ id:foto._id })
         .then(
           ()=> {
             let indice = this.fotos.indexOf(foto);
@@ -65,14 +64,23 @@
           err => {
             console.log(err);
             this.mensagem = 'Não foi possível remover a foto';
-        }); // Padrão ECMASCRIPT 6
+        });
+
+        //this.$http.delete('localhost:3000/v1/fotos/'+foto._id); jeito javascript puro
+        //this.$http.delete(`v1/fotos/${foto._id}`)
+        
 
       }
     },
     created() {
-      this.$http.get("http://localhost:3000/v1/fotos")
-        .then(res => res.json())
-        .then(qualquernome => this.fotos = qualquernome, erro => console.log(erro));
+      this.resource = this.$resource('v1/fotos{/id}'); // Faz a msm coisa que o $http
+      this.resource
+      .query() 
+      .then(res => res.json())
+      .then(qualquernome => this.fotos = qualquernome, erro => console.log(erro));
+     // this.$http.get("v1/fotos")
+     //  .then(res => res.json())
+     //  .then(qualquernome => this.fotos = qualquernome, erro => console.log(erro));
     }
   }
 </script>
