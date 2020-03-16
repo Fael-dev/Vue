@@ -1,7 +1,9 @@
 <template>
 
   <div>
-    <h1 class="centralizado">Cadastro</h1>
+
+    <h1 v-if="foto._id" class="centralizado"> Editando </h1>
+    <h1 v-else class="centralizado"> Cadastrando </h1>
     <h2 class="centralizado">{{ foto.titulo }}</h2>
 
     <form @submit.prevent="grava()">
@@ -55,15 +57,18 @@
     methods: {
       grava() {
         this.service
-        .cadastro(this.foto)
-        .then(() => this.foto = new Foto(), err => console.log(err));
+          .cadastro(this.foto)
+          .then(() => {
+            if (this.id) this.$router.push({name: 'home'});
+            this.foto = new Foto()
+          }, err => console.log(err));
       }
-    }, created(){
-        this.service = new FotoService(this.$resource);
-        if(this.id){
-          this.service.busca(this.id)
+    }, created() {
+      this.service = new FotoService(this.$resource);
+      if (this.id) {
+        this.service.busca(this.id)
           .then(foto => this.foto = foto);
-        }
+      }
     }
   }
 
