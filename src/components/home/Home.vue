@@ -9,6 +9,9 @@
       <li class="lista-fotos-item" v-for="foto of fotosComFiltro">
         <meu-Painel :titulo="foto.titulo">
           <imagem-responsiva v-meu-transform:scale.animate="1.2" :url="foto.url" :titulo="foto.titulo"/>
+          <router-link :to="{ name: 'editar', params:{ id: foto._id } }">
+            <meu-botao tipo="button" rotulo="EDITAR"/>
+          </router-link>
           <meu-botao tipo="reset" rotulo="Remover" :confirmacao="true" estilo="perigo" @botaoAtivado="remove(foto)"/>
           <!--
           NÃO FOI ADICIONADO O : ANTES DE ALGUMAS PROPRIEDADES,
@@ -69,16 +72,16 @@
 
         //this.$http.delete('localhost:3000/v1/fotos/'+foto._id); jeito javascript puro
         //this.$http.delete(`v1/fotos/${foto._id}`)
-        
+
 
       }
     },
     created() {
       this.service = new FotoService(this.$resource);
 
-      this.service.lista() 
+      this.service.lista()
       .then(qualquernome => this.fotos = qualquernome, erro => console.log(erro));
-     
+
      // this.$http.get("v1/fotos")
      //  .then(res => res.json())
      //  .then(qualquernome => this.fotos = qualquernome, erro => console.log(erro));
