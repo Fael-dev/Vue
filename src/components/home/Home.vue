@@ -66,8 +66,7 @@
             this.mensagem = 'Foto apagada com sucesso!';
           },
           err => {
-            console.log(err);
-            this.mensagem = 'Não foi possível remover a foto';
+            this.mensagem = err.message;
         });
 
         //this.$http.delete('localhost:3000/v1/fotos/'+foto._id); jeito javascript puro
@@ -80,7 +79,7 @@
       this.service = new FotoService(this.$resource);
 
       this.service.lista()
-      .then(qualquernome => this.fotos = qualquernome, erro => console.log(erro));
+      .then(qualquernome => this.fotos = qualquernome, erro => this.mensagem = erro.message);
 
      // this.$http.get("v1/fotos")
      //  .then(res => res.json())
