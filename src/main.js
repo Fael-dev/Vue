@@ -4,10 +4,13 @@ import VueResource from 'vue-resource';
 import VueRouter from 'vue-router';
 import {routes} from './routes';
 import './directives/Transform';
+import VeeValidate from 'vee-validate';
 
 Vue.use(VueResource);
 Vue.http.options.root = 'http://localhost:3000';
 Vue.use(VueRouter);
+Vue.use(VeeValidate);
+
 
 const router = new VueRouter({
   routes: routes, // PODE-SE DEIXAR APENAS routes, SEGUNDO O ECMASCRIPT 6, QUANDO O VALOR TEM O MSM NOME DA PROPRIEDADE
