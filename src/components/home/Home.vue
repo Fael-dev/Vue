@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- <img src="/static/download.jpeg" alt="lobo"/> --> 
     <h1 class="centralizado">{{ titulo }}</h1>
     <p v-show="mensagem" class="centralizado">{{ mensagem }}</p>
     <input type="search" class="filtro" @input="filtro = $event.target.value" placeholder="Pesquise por títulos...">

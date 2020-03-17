@@ -6,6 +6,11 @@ import {routes} from './routes';
 import './directives/Transform';
 import VeeValidate from 'vee-validate';
 import msg from './pt_BR';
+import 'jquery/dist/jquery.js'
+//import 'bootstrap/dist/css/bootstrap.css';
+//import 'bootstrap/dist/js/bootstrap.js';
+//import './assets/css/teste.css';
+//import './assets/css/teste.css';
 
 Vue.use(VueResource);
 Vue.http.options.root = 'http://localhost:3000';
